@@ -1,10 +1,19 @@
-import dotenv from 'dotenv'
+require('dotenv').config()
+
+// const dummy = {
+//   pair: 'XBTMYR',
+//   timestamp: 1690424345920,
+//   bid: '134028.00000000',
+//   ask: '134029.00000000',
+//   last_trade: '134056.00000000',
+//   rolling_24_hour_volume: '19.00806600',
+//   status: 'ACTIVE'
+// }
 
 async function forex() {
   try {
     const myHeaders = new Headers();
     myHeaders.append("apikey", "ZvV5DCbAXWZYna8f6f3ZFSkIFkCjgL7N");
-    //myHeaders.append(process.env.API, process.env.APIKEY);
 
     const requestOptions = {
       method: 'GET',
@@ -12,7 +21,7 @@ async function forex() {
       headers: myHeaders
     };
 
-    const response = await fetch("https://api.apilayer.com/fixer/convert?to=MYR&from=USD&amount=1", requestOptions);
+    const response = await fetch("https://api.apilayer.com/fixer/convert?to=MYR&from=USD&amount=100", requestOptions);
     
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -28,7 +37,9 @@ async function forex() {
   }
 }
 
-forex();
+async function calculateConvertedAmount() {
+  const resultForex = await forex();
+  console.log(resultForex * 2);
+}
 
-export { forex }
-
+calculateConvertedAmount();

@@ -12,7 +12,7 @@ async function luno() {
     //parseFloat(jsonResponse)
 }
 
-//console.log("BTCMYR price on Luno: MYR", luno());
+// console.log("BTCMYR price on Luno: MYR", luno());
 
 
     
