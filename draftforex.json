@@ -1,7 +1,0 @@
-pair: 'XBTMYR',
-  timestamp: 1690424345920,
-  bid: '134028.00000000',
-  ask: '134029.00000000',
-  last_trade: '134056.00000000',
-  rolling_24_hour_volume: '19.00806600',
-  status: 'ACTIVE'
