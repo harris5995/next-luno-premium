@@ -1,10 +1,9 @@
-import dotenv from 'dotenv'
+import 'dotenv/config'
 
 async function forex() {
   try {
     const myHeaders = new Headers();
-    myHeaders.append("apikey", "ZvV5DCbAXWZYna8f6f3ZFSkIFkCjgL7N");
-    //myHeaders.append(process.env.API, process.env.APIKEY);
+    myHeaders.append(process.env.API, process.env.APIKEY);
 
     const requestOptions = {
       method: 'GET',
@@ -20,7 +19,7 @@ async function forex() {
 
     const data = await response.json();
     const convertedAmount = data.result;
-    console.log("USDMYR:", convertedAmount);
+    //console.log("USDMYR:", convertedAmount);
     const number = parseFloat(convertedAmount);
     return number;
   } catch (error) {
@@ -28,7 +27,8 @@ async function forex() {
   }
 }
 
-forex();
+// const a = await forex();
+// console.log("USDMYR:", a)
 
 export { forex }
 

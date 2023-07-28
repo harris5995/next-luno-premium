@@ -10,7 +10,7 @@ async function luno() {
 
 	const jsonResponse = await response.json();
 	const BTCMYR = jsonResponse.last_trade;
-    console.log("BTCMYR price on Luno: MYR", jsonResponse.last_trade);
+    //console.log("BTCMYR price on Luno: MYR", BTCMYR);
     const number = parseFloat(BTCMYR);
     return number;
     
@@ -19,9 +19,11 @@ async function luno() {
 	}
 }
 
-luno()
-//await console.log("BTCMYR price on Luno: MYR", number);
+// const a = await luno()
+// await console.log("BTCMYR price on Luno: MYR ", a)
+
 export { luno }
+
 // async function lunowrite() {
 // 	console.log("BTCMYR price on Luno: MYR", luno());
 // }
