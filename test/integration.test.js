@@ -1,7 +1,9 @@
+// Reset module mocks before each test to not affect other tests in this file
 beforeEach(() => {
-    jest.resetModules(); // reset module mocks before each test to not affect other tests in this file
+    jest.resetModules(); 
   });
 
+//Testing for functions in all files. Pass only if each function works properly.  
 test("Returns expected display in console if everything is working", async () => {
     const endResult = require("../index.js").endResult;
     const MOCK_LUNOPRICE = 15000;
@@ -38,7 +40,7 @@ test("Returns expected display in console if everything is working", async () =>
 
     jest.mock('../lib/math.js', () => {
         return {
-          lunotoUSD() {
+          lunoToUSD() {
             const MOCK_LUNOUSD = 25000;
             return Promise.resolve(MOCK_LUNOUSD);
           },
@@ -65,5 +67,3 @@ expect(console.log).toHaveBeenCalledWith('Price Difference:'.padEnd(30) + 'USD '
 expect(console.log).toHaveBeenCalledWith('Luno Premium:'.padEnd(30) + LUNO_PREMIUM.toFixed(4) + '%');
 
 })
-    
-       

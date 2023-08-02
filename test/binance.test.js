@@ -26,12 +26,3 @@ test("Returns price if Binance request succeeds", async () => {
   expect(await getBinance()).toBe(20000);
 });
 
-
-
-
-
-
-// //test.js
-// jest.mock('../lib/binance.js', () => ({
-//   getBinance: () => 'BTCBUSD price on Binance: USD 29191.95',
-// }));

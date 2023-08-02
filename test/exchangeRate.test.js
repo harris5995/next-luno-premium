@@ -30,5 +30,3 @@ test("Returns Message for Failed HTTP Response", async () => {
   
   expect(await forex()).toBe("Failed to retrieve price");
 });
- 
- 
