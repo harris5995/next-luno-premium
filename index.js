@@ -1,25 +1,37 @@
 //This file prints all the relevant information taken from the files in the lib/ directory.
 
-import { luno } from './lib/luno.js'
-import { getBinance } from './lib/binance.js'
-import { forex } from './lib/exchangeRate.js'
+import { luno } from './lib/luno.js';
+import { getBinance } from './lib/binance.js';
+import { forex } from './lib/exchangeRate.js';
 import { lunoToUSD, priceDifference, lunoPremium } from './lib/math.js';
+import { userInput} from './lib/userInput.js';
 
-export async function endResult() {
+export async function endResult() 
+{
+    const pairList = ['XBT', 'XRP', 'ETH', 'LTC', 'XRP', 'BCH', 'ADA' ]
+    const currency = await userInput();
+    
+    if(pairList.includes(currency)) 
+    {
+        const luno1 = await luno(currency);
+        const forex1 = await forex();
+        const binance1 = await getBinance(currency);
+        const lunoUSD = await lunoToUSD(currency);
+        const pD = await priceDifference(currency);
+        const lP = await lunoPremium(currency);
 
-const luno1 = await luno();
-const forex1 = await forex();
-const binance1 = await getBinance();
-const lunoUSD = await lunoToUSD(luno1);
-const pD = await priceDifference();
-const lP = await lunoPremium();
-
-console.log('BTCMYR price on Luno:'.padEnd(30) + 'MYR ' + luno1)
-console.log('USDMYR:'.padEnd(30) + forex1)
-console.log('BTCUSD price on Luno:'.padEnd(30) + 'USD ' + lunoUSD);
-console.log('BTCBUSD price on Binance:'.padEnd(30) + 'USD ' + binance1)
-console.log('Price Difference:'.padEnd(30) + 'USD ' + pD);
-console.log('Luno Premium:'.padEnd(30) + lP.toFixed(4) + '%');
+        console.log(currency + 'MYR price on Luno:'.padEnd(30) + 'MYR ' + luno1)
+        console.log('USDMYR:'.padEnd(33) + forex1)
+        console.log(currency + 'USD price on Luno:'.padEnd(30) + 'USD ' + lunoUSD);
+        console.log(currency + 'BUSD price on Binance:'.padEnd(30) + 'USD ' + binance1)
+        console.log('Price Difference:'.padEnd(33) + 'USD ' + pD);
+        console.log('Luno Premium:'.padEnd(33) + lP.toFixed(4) + '%');
+    }
+    else 
+    {
+        console.log("Error: Invalid currency code, please try again.");
+        endResult();
+    }
 }
 
 endResult()

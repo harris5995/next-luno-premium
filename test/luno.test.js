@@ -8,14 +8,12 @@ beforeEach(() => {
 //Importing actual luno function from luno.js
 import { luno } from '../lib/luno.js';
 
+//Declaring mock variables
 const MOCK_PRICE = 15000
 const MOCK_JSON_RESP = { last_trade: MOCK_PRICE }
 
 //Testing luno function to get desired API data
 test("Returns the BTCMYR rate if successful", async () => {
-    // const MOCK_PRICE = 15000
-    // const MOCK_JSON_RESP = { last_trade: MOCK_PRICE }
-
     global.fetch = jest.fn(() => Promise.resolve({
         status: 200,
         json: () => Promise.resolve(MOCK_JSON_RESP)
@@ -26,7 +24,6 @@ test("Returns the BTCMYR rate if successful", async () => {
 
 //Testing luno function for failed HTTP request
 test("Returns Message for Failed Luno Response", async () => {
-
     global.fetch = jest.fn(() => Promise.resolve({
         status: 500,
         json: () => Promise.resolve(MOCK_JSON_RESP)
