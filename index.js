@@ -8,7 +8,7 @@ import { userInput} from './lib/userInput.js';
 
 export async function endResult() 
 {
-    const pairList = ['XBT', 'XRP', 'ETH', 'LTC', 'XRP', 'BCH', 'ADA' ]
+    const pairList = ['XBT', 'XRP', 'ETH', 'LTC', 'XRP', 'BCH', 'ADA']
     const currency = await userInput();
     
     if(pairList.includes(currency)) 
@@ -26,13 +26,23 @@ export async function endResult()
         console.log(currency + 'BUSD price on Binance:'.padEnd(30) + 'USD ' + binance1)
         console.log('Price Difference:'.padEnd(33) + 'USD ' + pD);
         console.log('Luno Premium:'.padEnd(33) + lP.toFixed(4) + '%');
+
+        console.log("To end program, type 'End'.")
+        
+        setTimeout(endResult, 1000);
     }
-    else 
+    else if (currency === "End")
+    {
+        console.log("Ending program.")
+    }
+    else
     {
         console.log("Error: Invalid currency code, please try again.");
         endResult();
     }
 }
+
+
 
 endResult()
 

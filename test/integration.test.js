@@ -5,9 +5,9 @@ beforeEach(() => {
 
 //Testing for functions in all files. Pass only if each function works properly.  
 test("Returns expected display in console if everything is working", async () => {
-    const endResult = require("../index.js").endResult;
+    const endResult = require("../indexOld.js").endResult;
     const MOCK_LUNOPRICE = 15000;
-    jest.mock("../lib/luno.js", () => {
+    jest.mock("../lib/lunoOld.js", () => {
         const MOCK_LUNOPRICE = 15000;
         return {
             luno() {
@@ -26,7 +26,7 @@ test("Returns expected display in console if everything is working", async () =>
     })
 
     const MOCK_BINANCERATE = 20000;
-    jest.mock("../lib/binance.js", () => {
+    jest.mock("../lib/binanceOld.js", () => {
         return {
             getBinance() {
                 return new Promise(res => res(MOCK_BINANCERATE))
@@ -38,7 +38,7 @@ test("Returns expected display in console if everything is working", async () =>
     const PRICE_DIFFERENCE = 1;
     const LUNO_PREMIUM = 0.25;
 
-    jest.mock('../lib/math.js', () => {
+    jest.mock('../lib/mathOld.js', () => {
         return {
           lunoToUSD() {
             const MOCK_LUNOUSD = 25000;

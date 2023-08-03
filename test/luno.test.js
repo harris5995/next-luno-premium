@@ -6,7 +6,7 @@ beforeEach(() => {
 });
 
 //Importing actual luno function from luno.js
-import { luno } from '../lib/luno.js';
+import { luno } from '../libOld/lunoOld.js';
 
 //Declaring mock variables
 const MOCK_PRICE = 15000
